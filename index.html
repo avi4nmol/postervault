@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="PosterVault — a curated gallery of cinematic movie poster art and film-inspired wall decor.">
+  <meta name="theme-color" content="#0b0b0f">
+  <title>PosterVault — Movie Poster Gallery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#09090d;--panel:#121218;--text:#f5f4ef;--muted:#a4a4ad;--line:#25252e;--accent:#e7b75c}
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:Inter,system-ui,sans-serif;background:radial-gradient(circle at 80% 0%,#272012 0,transparent 28%),var(--bg);color:var(--text);line-height:1.6}
+    a{text-decoration:none;color:inherit}
+    .container{width:min(1120px,92%);margin:auto}
+    header{position:sticky;top:0;z-index:20;background:rgba(9,9,13,.82);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.06)}
+    nav{height:76px;display:flex;align-items:center;justify-content:space-between}
+    .logo{font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+    .logo span{color:var(--accent)}
+    .navlinks{display:flex;gap:28px;color:#c9c9d0;font-size:14px}
+    .navlinks a:hover{color:white}
+    .hero{padding:90px 0 70px;display:grid;grid-template-columns:1.15fr .85fr;gap:55px;align-items:center}
+    .eyebrow{color:var(--accent);font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;margin-bottom:16px}
+    h1{font-family:"Playfair Display",serif;font-size:clamp(52px,7vw,86px);line-height:.98;max-width:720px}
+    .hero p{margin:26px 0;color:var(--muted);font-size:18px;max-width:600px}
+    .buttons{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{padding:13px 18px;border-radius:999px;border:1px solid var(--line);font-weight:600;font-size:14px}
+    .btn.primary{background:var(--accent);color:#17130a;border-color:var(--accent)}
+    .btn:hover{transform:translateY(-1px)}
+    .featured{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+    .poster{aspect-ratio:2/3;border-radius:12px;overflow:hidden;position:relative;border:1px solid #30303a;background:linear-gradient(145deg,#24242d,#111118)}
+    .poster:nth-child(1){background:linear-gradient(160deg,#1b2c48,#081019 60%,#5c3b18)}
+    .poster:nth-child(2){background:linear-gradient(145deg,#43262c,#151217 55%,#cf8e42)}
+    .poster:nth-child(3){background:linear-gradient(160deg,#30244b,#0b0912 62%,#4f7b82)}
+    .poster:nth-child(4){background:linear-gradient(145deg,#1a3b38,#090e0d 55%,#8b5c31)}
+    .poster:after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.75),transparent 45%)}
+    .poster-label{position:absolute;z-index:2;left:15px;right:15px;bottom:13px}
+    .poster-label strong{display:block;font-family:"Playfair Display",serif;font-size:22px}
+    .poster-label small{color:#ddd;font-size:11px;letter-spacing:.13em;text-transform:uppercase}
+    section{padding:75px 0}
+    .section-head{display:flex;align-items:end;justify-content:space-between;margin-bottom:28px;gap:20px}
+    h2{font-family:"Playfair Display",serif;font-size:42px}
+    .muted{color:var(--muted)}
+    .filters{display:flex;gap:9px;flex-wrap:wrap}
+    .chip{border:1px solid var(--line);padding:8px 12px;border-radius:999px;color:#bdbdc6;font-size:13px}
+    .chip:hover,.chip.active{border-color:#545460;color:white}
+    .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+    .card .poster{border:0;border-radius:0}
+    .card-body{padding:14px 15px 16px}
+    .card-body h3{font-size:15px}
+    .card-body p{font-size:12px;color:var(--muted);margin-top:4px}
+    .about{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+    .about-card{background:linear-gradient(145deg,#15151c,#0e0e13);border:1px solid var(--line);border-radius:16px;padding:32px}
+    .about-card p{color:var(--muted);margin-top:12px}
+    .cta{border:1px solid #3b3427;background:linear-gradient(135deg,#211b10,#111116);border-radius:20px;padding:42px;display:flex;align-items:center;justify-content:space-between;gap:30px}
+    footer{border-top:1px solid var(--line);padding:30px 0;color:#83838d;font-size:13px}
+    @media(max-width:850px){.hero,.about{grid-template-columns:1fr}.gallery{grid-template-columns:repeat(2,1fr)}.navlinks{display:none}}
+    @media(max-width:520px){.featured,.gallery{grid-template-columns:1fr 1fr}.hero{padding-top:60px}.cta{padding:28px;display:block}.cta .btn{display:inline-block;margin-top:18px}h2{font-size:34px}}
+  </style>
+</head>
+<body>
+<header>
+  <div class="container">
+    <nav>
+      <a class="logo" href="#"><span>Poster</span>Vault</a>
+      <div class="navlinks">
+        <a href="#gallery">Posters</a>
+        <a href="#categories">Categories</a>
+        <a href="#about">About</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero container">
+    <div>
+      <div class="eyebrow">Cinema on your wall</div>
+      <h1>Posters for people who love movies.</h1>
+      <p>A curated gallery of cinematic poster art, film-inspired designs, and visual ideas for movie fans and collectors.</p>
+      <div class="buttons">
+        <a class="btn primary" href="#gallery">Explore posters</a>
+        <a class="btn" href="#about">About PosterVault</a>
+      </div>
+    </div>
+    <div class="featured">
+      <div class="poster"><div class="poster-label"><small>Original Collection</small><strong>Midnight Run</strong></div></div>
+      <div class="poster"><div class="poster-label"><small>Film Noir</small><strong>After Dark</strong></div></div>
+      <div class="poster"><div class="poster-label"><small>Science Fiction</small><strong>Beyond Orbit</strong></div></div>
+      <div class="poster"><div class="poster-label"><small>Drama</small><strong>Last Light</strong></div></div>
+    </div>
+  </section>
+
+  <section id="gallery" class="container">
+    <div class="section-head">
+      <div><div class="eyebrow">Featured</div><h2>Poster gallery</h2></div>
+      <div class="filters"><span class="chip active">All</span><span class="chip">Classic</span><span class="chip">Sci-Fi</span><span class="chip">Horror</span></div>
+    </div>
+    <div class="gallery">
+      <article class="card"><div class="poster"><div class="poster-label"><small>Collection 01</small><strong>Neon City</strong></div></div><div class="card-body"><h3>Neon City</h3><p>Retro-futurist poster concept</p></div></article>
+      <article class="card"><div class="poster"><div class="poster-label"><small>Collection 02</small><strong>The Last Frame</strong></div></div><div class="card-body"><h3>The Last Frame</h3><p>Dark cinematic poster concept</p></div></article>
+      <article class="card"><div class="poster"><div class="poster-label"><small>Collection 03</small><strong>Orbit</strong></div></div><div class="card-body"><h3>Orbit</h3><p>Science-fiction poster concept</p></div></article>
+      <article class="card"><div class="poster"><div class="poster-label"><small>Collection 04</small><strong>Red Room</strong></div></div><div class="card-body"><h3>Red Room</h3><p>Suspense poster concept</p></div></article>
+      <article class="card"><div class="poster"><div class="poster-label"><small>Collection 05</small><strong>Golden Hour</strong></div></div><div class="card-body"><h3>Golden Hour</h3><p>Drama poster concept</p></div></article>
+      <article class="card"><div class="poster"><div class="poster-label"><small>Collection 06</small><strong>Unknown Signal</strong></div></div><div class="card-body"><h3>Unknown Signal</h3><p>Mystery poster concept</p></div></article>
+      <article class="card"><div class="poster"><div class="poster-label"><small>Collection 07</small><strong>Night Drive</strong></div></div><div class="card-body"><h3>Night Drive</h3><p>Neo-noir poster concept</p></div></article>
+      <article class="card"><div class="poster"><div class="poster-label"><small>Collection 08</small><strong>Final Scene</strong></div></div><div class="card-body"><h3>Final Scene</h3><p>Minimal movie-art concept</p></div></article>
+    </div>
+  </section>
+
+  <section id="categories" class="container">
+    <div class="section-head"><div><div class="eyebrow">Browse</div><h2>By mood</h2></div></div>
+    <div class="gallery">
+      <article class="about-card"><h3>Classic Cinema</h3><p>Timeless visual styles inspired by the golden age of film.</p></article>
+      <article class="about-card"><h3>Science Fiction</h3><p>Space, technology, distant worlds, and futuristic poster ideas.</p></article>
+      <article class="about-card"><h3>Horror</h3><p>Moody, mysterious, atmospheric designs for horror fans.</p></article>
+      <article class="about-card"><h3>Drama</h3><p>Minimal, emotional, character-driven cinematic artwork.</p></article>
+    </div>
+  </section>
+
+  <section id="about" class="container">
+    <div class="about">
+      <div class="about-card"><div class="eyebrow">About</div><h2>Built for movie fans.</h2><p>PosterVault is a visual collection for discovering poster styles, cinematic layouts, and film-inspired wall-art ideas.</p></div>
+      <div class="about-card"><div class="eyebrow">Pinterest</div><h2>Made to be discovered.</h2><p>Use this site as the home link for your Pinterest business profile and send visitors to your poster collections.</p></div>
+    </div>
+  </section>
+
+  <section class="container">
+    <div class="cta">
+      <div><div class="eyebrow">Your brand</div><h2>Ready for your custom domain?</h2><p class="muted">Replace this free site address with your own .com, .in, or other domain after publishing.</p></div>
+      <a class="btn primary" href="mailto:hello@postervault.example">Contact</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">© 2026 PosterVault · A movie-poster inspiration gallery.</div>
+</footer>
+</body>
+</html>
